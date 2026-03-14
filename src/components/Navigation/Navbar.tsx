@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 
 function Navbar() {
 
-    const NavGreenRef = useRef<HTMLDivElement | null>(null)
+    // const NavGreenRef = useRef<HTMLDivElement | null>(null)
 
 
 

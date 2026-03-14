@@ -80,7 +80,7 @@ const Agence = () => {
         </div>
         <div ref={imageDivRef} className='absolute overflow-hidden lg:h-[20vw] h-[30vw] lg:rounded-3xl rounded-xl lg:w-[15vw] w-[25vw] 
         lg:top-96 -top-48 lg:left-[30vw] left-[30vw] -mt-[20vw]'>
-          <img ref={imageRef} className=' h-full object-cover w-full' src="https://k72.ca/uploads/teamMembers/Carl_480x640-480x640.jpg" alt="" />
+          <img ref={imageRef} className=' h-full object-cover w-full' src="/agency/CAMILLE_480X640_2.jpg" alt="" />
         </div>
       </div>
       <div id='page2' className=" h-screen">
