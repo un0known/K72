@@ -1,8 +1,10 @@
-import React, { useRef } from 'react'
+import React, { useContext, useRef } from 'react'
+import { NavbarContext } from '../../context/NavContext'
 
 function Navbar() {
 
     // const NavGreenRef = useRef<HTMLDivElement | null>(null)
+    const [navOpen, setNavOpen] = useContext(NavbarContext)
 
 
 
@@ -22,11 +24,13 @@ function Navbar() {
                 // onMouseLeave={()=>{
                 //     NavGreenRef.current.style.height = '0%'
                 // }}
+                onClick={()=>setNavOpen(true)}
                 className='bg-black h-14 w-[16vw] relative group text-white'>
                 <div className="absolute bg-green-500 top-0 h-0 w-full transition-all group-hover:h-full"></div>
-                <h1 className="absolute inset-0 flex items-center justify-end text-2xl pr-3">
-                    X
-                </h1>
+                <div className="relative right-0 flex flex-col gap-1 items-end justify-center text-2xl p-5">
+                    <div className='w-16 h-0.5 bg-white'></div>
+                    <div className='w-8 h-0.5 bg-white'></div>
+                </div>
                 <div className='relative'>
 
                 </div>
