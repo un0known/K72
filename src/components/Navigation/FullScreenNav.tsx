@@ -1,7 +1,8 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import React, { useContext, useRef } from 'react'
-import { NavbarContext } from '../../context/NavContext'
+import React, { useEffect, useRef } from 'react'
+// import { NavbarContext } from '../../context/NavContext'
+import { useNavbar } from '../../hooks/useNavbar'
 
 function FullScreenNav() {
 
@@ -10,20 +11,24 @@ function FullScreenNav() {
     const fullScreenRef = useRef<HTMLDivElement | null>(null)
     const tl = useRef<gsap.core.Timeline | null>(null)
 
-    const [navOpen, setNavOpen] = useContext(NavbarContext)
+    // const [navOpen, setNavOpen] = useContext(NavbarContext)
+    const [navOpen, setNavOpen] =useNavbar()
     console.log(navOpen)
 
     // control navbar visibility
+
+    //  1. INITIAL HIDE (important)
     useGSAP(() => {
-        if (!navOpen) return
+        gsap.set(fullScreenRef.current, { display: "none" })
+    }, [])
 
-        // reset states before animation
-        gsap.set(".stairing", { clearProps: "all" })
-        gsap.set(".link", { clearProps: "all" })
+    //  2. TIMELINE CREATE (ONLY ONCE)
+    useGSAP(() => {
 
-        tl.current = gsap.timeline()
+        tl.current = gsap.timeline({ paused: true })
 
         tl.current
+        //  STEP 1 → stair animation
             .from(".stairing", {
                 height: 0,
                 duration: 0.45,
@@ -32,11 +37,13 @@ function FullScreenNav() {
                 }
             })
 
+            //  STEP 2 → navbar fade
             .from(fullNavLinksRef.current, {
                 opacity: 0,
                 duration: 0.1
             })
 
+            //  STEP 2 → navbar fade
             .from(".link", {
                 rotateX: 90,
                 opacity: 0,
@@ -47,26 +54,39 @@ function FullScreenNav() {
             })
 
     }, {
-        scope: fullScreenRef,
-        dependencies: [navOpen]
+        scope: fullScreenRef
     })
 
-    // control navbar visibility
-    useGSAP(() => {
+    //  3. OPEN / CLOSE CONTROL
+    useEffect(() => {
+
+        if (!tl.current) return
 
         if (navOpen) {
             gsap.set(fullScreenRef.current, { display: "block" })
+            tl.current.play()
         } else {
-            gsap.set(fullScreenRef.current, { display: "none" })
+            tl.current.reverse()
         }
 
     }, [navOpen])
+
+     //  4. HIDE AFTER REVERSE COMPLETE
+    useGSAP(() => {
+
+        if (!tl.current) return
+
+        tl.current.eventCallback("onReverseComplete", () => {
+            gsap.set(fullScreenRef.current, { display: "none" })
+        })
+
+    }, [])
 
 
     return (
         <>
             <div ref={fullScreenRef} className='fullscreennav text-white h-screen w-full absolute z-50' id='fullscreennav'>
-                {/* ######### ANIMATION ######### */}
+                {/* ######### STAIR ANIMATION ######### */}
                 <div className='h-screen w-full absolute top-0 '>
                     <div className="w-full h-full flex">
                         <div className="h-full w-1/5 bg-red-500
@@ -83,6 +103,7 @@ function FullScreenNav() {
                 </div>
                 {/* ######## FULL NAVBAR ######### */}
                 <div ref={fullNavLinksRef} className='relative'>
+                    {/* ######## TOP NAVBAR ######### */}
                     <div className="navlink flex w-full justify-between items-start">
                         <div className='p-3'>
                             <div className='w-28'>
@@ -97,6 +118,7 @@ function FullScreenNav() {
                             <div className='h-42 w-0.5 right-0 rotate-45 origin-top absolute bg-white m-1'></div>
                         </div>
                     </div>
+                    {/* ######## LINKS ######### */}
                     <div className=''>
                         {/* ######## WORK ######### */}
                         <div className="link origin-top border-t group relative  h-[7vw] py-1 w-full overflow-hidden">
