@@ -19,7 +19,7 @@ function Navbar() {
         throw new Error("useContext(NavbarColorContext) must be used within a NavbarColorProvider")
     }
 
-    const [navColor, setNavColor] = navColorContext
+    const [navColor] = navColorContext
 
 
 

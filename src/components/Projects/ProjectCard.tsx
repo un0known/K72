@@ -1,5 +1,4 @@
 interface ProjectCardProps {
-  title: string;
   image1: string;
   image2: string;
   // add other props here

@@ -1,6 +1,6 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 // import { NavbarContext } from '../../context/NavContext'
 import { useNavbar } from '../../hooks/useNavbar'
 
@@ -84,7 +84,7 @@ function FullScreenNav() {
 
     return (
         <>
-            <div ref={fullScreenRef} className='fullscreennav text-white fixed inset-0 h-screen w-full z-10' id='fullscreennav'>
+            <div ref={fullScreenRef} className='fullscreennav text-white fixed inset-0 h-screen w-full z-20' id='fullscreennav'>
                 {/* ######### STAIR ANIMATION ######### */}
                 <div className='h-screen w-full absolute top-0 '>
                     <div className="w-full h-full flex">
