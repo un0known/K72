@@ -1,6 +1,11 @@
-import React from 'react'
+interface ProjectCardProps {
+  title: string;
+  image1: string;
+  image2: string;
+  // add other props here
+}
 
-const ProjectCard = (props) => {
+const ProjectCard = (props: ProjectCardProps) => {
     return (
         <>
             <div className='lg:w-1/2 group transition-all relative rounded-none hover:rounded-[70px] overflow-hidden h-full '>

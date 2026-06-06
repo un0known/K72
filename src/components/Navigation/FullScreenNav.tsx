@@ -13,7 +13,6 @@ function FullScreenNav() {
 
     // const [navOpen, setNavOpen] = useContext(NavbarContext)
     const [navOpen, setNavOpen] = useNavbar()
-    console.log(navOpen)
 
     // control navbar visibility
 

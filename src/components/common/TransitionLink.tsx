@@ -1,11 +1,16 @@
-import React from 'react'
 import { useNavigate } from "react-router-dom"
 import gsap from "gsap"
+import type React from "react";
 
-function TransitionLink({ to, children }) {
+interface TransitionLinkProps {
+  to: string;
+  children: React.ReactNode;
+}
+
+function TransitionLink({ to, children }:TransitionLinkProps) {
   const navigate = useNavigate()
 
-  const handleClick = (e) => {
+  const handleClick = (e:React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
 
     const tl = gsap.timeline()

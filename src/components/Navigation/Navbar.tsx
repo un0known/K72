@@ -1,12 +1,25 @@
-import React, { useContext, useRef } from 'react'
+import { useContext, } from 'react'
 import { NavbarColorContext, NavbarContext } from '../../context/NavContext'
 
 
 function Navbar() {
 
-    // const NavGreenRef = useRef<HTMLDivElement | null>(null)
-    const [navOpen, setNavOpen] = useContext(NavbarContext)
-    const [navColor, setNavColor] = useContext(NavbarColorContext)
+
+    const navContext = useContext(NavbarContext)
+    const navColorContext = useContext(NavbarColorContext)
+
+
+    if (!navContext) {
+        throw new Error("useContext(NavbarContext) must be used within a NavbarProvider")
+    }
+
+    const [navOpen, setNavOpen] = navContext
+
+    if (!navColorContext) {
+        throw new Error("useContext(NavbarColorContext) must be used within a NavbarColorProvider")
+    }
+
+    const [navColor, setNavColor] = navColorContext
 
 
 
@@ -19,8 +32,8 @@ function Navbar() {
                     </svg>
                 </div>
             </div>
-            <div 
-                onClick={()=>setNavOpen(true)}
+            <div
+                onClick={() => setNavOpen(true)}
                 className='bg-black h-14 w-[20vw] lg:w-[16vw] relative group text-white'>
                 <div className="absolute bg-green-500 top-0 h-0 w-full transition-all group-hover:h-full"></div>
                 <div className="relative right-0 flex flex-col gap-1 items-end justify-center text-2xl lg:p-5 pt-5">
