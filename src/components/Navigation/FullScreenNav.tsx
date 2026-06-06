@@ -12,7 +12,7 @@ function FullScreenNav() {
     const tl = useRef<gsap.core.Timeline | null>(null)
 
     // const [navOpen, setNavOpen] = useContext(NavbarContext)
-    const [navOpen, setNavOpen] =useNavbar()
+    const [navOpen, setNavOpen] = useNavbar()
     console.log(navOpen)
 
     // control navbar visibility
@@ -28,7 +28,7 @@ function FullScreenNav() {
         tl.current = gsap.timeline({ paused: true })
 
         tl.current
-        //  STEP 1 → stair animation
+            //  STEP 1 → stair animation
             .from(".stairing", {
                 height: 0,
                 duration: 0.45,
@@ -71,7 +71,7 @@ function FullScreenNav() {
 
     }, [navOpen])
 
-     //  4. HIDE AFTER REVERSE COMPLETE
+    //  4. HIDE AFTER REVERSE COMPLETE
     useGSAP(() => {
 
         if (!tl.current) return
@@ -85,7 +85,7 @@ function FullScreenNav() {
 
     return (
         <>
-            <div ref={fullScreenRef} className='fullscreennav text-white h-screen w-full absolute z-50' id='fullscreennav'>
+            <div ref={fullScreenRef} className='fullscreennav text-white fixed inset-0 h-screen w-full z-10' id='fullscreennav'>
                 {/* ######### STAIR ANIMATION ######### */}
                 <div className='h-screen w-full absolute top-0 '>
                     <div className="w-full h-full flex">
@@ -104,47 +104,57 @@ function FullScreenNav() {
                 {/* ######## FULL NAVBAR ######### */}
                 <div ref={fullNavLinksRef} className='relative'>
                     {/* ######## TOP NAVBAR ######### */}
-                    <div className="navlink flex w-full justify-between items-start">
-                        <div className='p-3'>
-                            <div className='w-28'>
+                    <div className="navlink flex w-full justify-between lg:p-5 p-2 items-start">
+                        <div className=''>
+                            <div className=' lg:w-36 w-24'>
                                 <svg className='w-full' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 103 44">
-                                    <path fill='white' fill-rule="evenodd" d="M35.1441047,8.4486911 L58.6905011,8.4486911 L58.6905011,-1.3094819e-14 L35.1441047,-1.3094819e-14 L35.1441047,8.4486911 Z M20.0019577,0.000230366492 L8.83414254,25.3433089 L18.4876971,25.3433089 L29.5733875,0.000230366492 L20.0019577,0.000230366492 Z M72.5255345,0.000691099476 L72.5255345,8.44846073 L94.3991559,8.44846073 L94.3991559,16.8932356 L72.5275991,16.8932356 L72.5275991,19.5237906 L72.5255345,19.5237906 L72.5255345,43.9274346 L102.80937,43.9274346 L102.80937,35.4798953 L80.9357483,35.4798953 L80.9357483,25.3437696 L94.3996147,25.3428482 L94.3996147,16.8953089 L102.80937,16.8953089 L102.80937,0.000691099476 L72.5255345,0.000691099476 Z M-1.30398043e-14,43.9278953 L8.78642762,43.9278953 L8.78642762,0.0057591623 L-1.30398043e-14,0.0057591623 L-1.30398043e-14,43.9278953 Z M58.6849955,8.4486911 L43.1186904,43.9274346 L52.3166592,43.9274346 L67.9877996,8.4486911 L58.6849955,8.4486911 Z M18.4688864,25.3437696 L26.7045278,43.9278953 L36.2761871,43.9278953 L28.1676325,25.3375497 L18.4688864,25.3437696 Z"></path>
+                                    <path fill='white' fill-rule="evenodd" d="M35.1441047,8.4486911 L58.6905011,8.4486911 L58.6905011,-1.3094819e-14 
+                                    L35.1441047,-1.3094819e-14 L35.1441047,8.4486911 Z M20.0019577,0.000230366492 L8.83414254,25.3433089 L18.4876971,25.3433089 
+                                    L29.5733875,0.000230366492 L20.0019577,0.000230366492 Z M72.5255345,0.000691099476 L72.5255345,8.44846073 L94.3991559,8.44846073 
+                                    L94.3991559,16.8932356 L72.5275991,16.8932356 L72.5275991,19.5237906 L72.5255345,19.5237906 L72.5255345,43.9274346 L102.80937,
+                                    43.9274346 L102.80937,35.4798953 L80.9357483,35.4798953 L80.9357483,25.3437696 L94.3996147,25.3428482 L94.3996147,16.8953089 
+                                    L102.80937,16.8953089 L102.80937,0.000691099476 L72.5255345,0.000691099476 Z M-1.30398043e-14,43.9278953 L8.78642762,43.9278953 
+                                    L8.78642762,0.0057591623 L-1.30398043e-14,0.0057591623 L-1.30398043e-14,43.9278953 Z M58.6849955,8.4486911 L43.1186904,43.9274346 
+                                    L52.3166592,43.9274346 L67.9877996,8.4486911 L58.6849955,8.4486911 Z M18.4688864,25.3437696 L26.7045278,43.9278953 
+                                    L36.2761871,43.9278953 L28.1676325,25.3375497 L18.4688864,25.3437696 Z"></path>
                                 </svg>
                             </div>
                         </div>
                         <div onClick={() => setNavOpen(false)}
-                            className='h-30 w-32 relative cursor-pointer m-1'>
-                            <div className='h-42 w-0.5 -rotate-45 origin-top absolute bg-white m-1'></div>
-                            <div className='h-42 w-0.5 right-0 rotate-45 origin-top absolute bg-white m-1'></div>
+                            className='h-16 w-14 sm:h-20 sm:w-16 md:h-24 md:w-20 lg:w-24 relative cursor-pointer'>
+                            <div className='h-16 sm:h-20 md:h-24 lg:h-32 w-0.5 -rotate-45 origin-top absolute bg-white m-1'></div>
+                            <div className='h-16 sm:h-20 md:h-24 lg:h-32 w-0.5 right-0 rotate-45 origin-top absolute bg-white m-1'></div>
                         </div>
                     </div>
                     {/* ######## LINKS ######### */}
                     <div className=''>
                         {/* ######## WORK ######### */}
-                        <div className="link origin-top border-t group relative  h-[7vw] py-1 w-full overflow-hidden">
-                            <h1 className='text-[7vw] font-[font2] text-center uppercase leading-none'>work</h1>
+                        <div className="link origin-top border-t group relative min-h-10 md:min-h-18 lg:h-[8vw] py-2 w-full overflow-hidden">
+                            <h1 className='text-4xl sm:text-5xl md:text-6xl lg:text-[8vw] font-[font2] text-center uppercase leading-none'>work</h1>
                             {/* ########## HOVER DIV ########## */}
-                            <div className='bg-yellow-300 transition-all absolute top-0 h-0 w-full leading-none
+                            <div className='hidden lg:block bg-yellow-300 transition-all absolute top-0 h-0 w-full leading-none
                          group-hover:h-full duration-300 inset-0 opacity-0 group-hover:opacity-100'>
                                 <div className='moveX flex gap-3 text-8xl font-[font2] leading-none items-center text-black'>
-                                    <h2 className='text-[8vw] font-[font2] text-center uppercase leading-none whitespace-nowrap'>see everything</h2>
-                                    <img src="/fullnav/work1.jpg" alt="" className='h-24 mb-4 w-72 object-cover rounded-full shrink-0' />
-                                    <h2 className='text-[8vw] font-[font2] text-center uppercase leading-none whitespace-nowrap'>see everything</h2>
+                                    <h2 className='text-3xl sm:text-5xl md:text-6xl lg:text-[8vw] font-[font2] uppercase whitespace-nowrap'>see everything</h2>
+                                    <img src="/fullnav/work1.jpg" alt="" 
+                                    className='h-12 sm:h-16 md:h-20 lg:h-24 w-32 sm:w-40 md:w-56 lg:w-72 mb-2 lg:mb-4 object-cover rounded-full shrink-0' />
+                                    <h2 className='text-3xl sm:text-5xl md:text-6xl lg:text-[8vw] font-[font2] uppercase whitespace-nowrap'>see everything</h2>
                                     <img src="/fullnav/work2.png" alt="" className='h-24 mb-4 w-72 object-cover rounded-full shrink-0' />
                                     {/* DUPLICATE CONTENT */}
-                                    <h2 className='text-[8vw] font-[font2] text-center uppercase leading-none whitespace-nowrap'>see everything</h2>
-                                    <img src="/fullnav/work1.jpg" alt="" className='h-24 mb-4 w-72 object-cover rounded-full shrink-0' />
-                                    <h2 className='text-[8vw] font-[font2] text-center uppercase leading-none whitespace-nowrap'>see everything</h2>
+                                    <h2 className='text-3xl sm:text-5xl md:text-6xl lg:text-[8vw] font-[font2] uppercase whitespace-nowrap'>see everything</h2>
+                                    <img src="/fullnav/work1.jpg" alt="" 
+                                    className='h-12 sm:h-16 md:h-20 lg:h-24 w-32 sm:w-40 md:w-56 lg:w-72 mb-2 lg:mb-4 object-cover rounded-full shrink-0' />
+                                   <h2 className='text-3xl sm:text-5xl md:text-6xl lg:text-[8vw] font-[font2] uppercase whitespace-nowrap'>see everything</h2>
                                     <img src="/fullnav/work2.png" alt="" className='h-24 mb-4 w-72 object-cover rounded-full shrink-0' />
                                 </div>
 
                             </div>
                         </div>
                         {/* ######## AGENCY ######### */}
-                        <div className="link origin-top border-t group relative h-[7vw] py-1 w-full overflow-hidden">
-                            <h1 className='text-[7vw] font-[font2] text-center uppercase leading-none'>agency</h1>
+                        <div className="link origin-top border-t group relative min-h-10 md:min-h-18 lg:h-[8vw] py-2 w-full overflow-hidden">
+                            <h1 className='text-4xl sm:text-5xl md:text-6xl lg:text-[8vw] font-[font2] text-center uppercase leading-none'>agency</h1>
                             {/* ########## HOVER DIV ########## */}
-                            <div className='bg-yellow-300 transition-all absolute top-0 h-0 w-full leading-none
+                            <div className='hidden lg:block bg-yellow-300 transition-all absolute top-0 h-0 w-full leading-none
                          group-hover:h-full duration-300 inset-0 opacity-0 group-hover:opacity-100'>
                                 <div className='moveX flex gap-3 text-8xl font-[font2] leading-none items-center text-black'>
                                     <h2 className='text-[8vw] font-[font2] text-center uppercase leading-none whitespace-nowrap'>know us</h2>
@@ -161,10 +171,10 @@ function FullScreenNav() {
                             </div>
                         </div>
                         {/* ######## CONTENT ######### */}
-                        <div className="link origin-top border-t group relative h-[7vw] py-1 w-full overflow-hidden">
-                            <h1 className='text-[7vw] font-[font2] text-center uppercase leading-none'>content</h1>
+                        <div className="link origin-top border-t group relative min-h-10 md:min-h-18 lg:h-[8vw] py-2 w-full overflow-hidden">
+                            <h1 className='text-4xl sm:text-5xl md:text-6xl lg:text-[8vw] font-[font2] text-center uppercase leading-none'>content</h1>
                             {/* ########## HOVER DIV ########## */}
-                            <div className='bg-yellow-300 transition-all absolute top-0 h-0 w-full leading-none
+                            <div className='hidden lg:block bg-yellow-300 transition-all absolute top-0 h-0 w-full leading-none
                          group-hover:h-full duration-300 inset-0 opacity-0 group-hover:opacity-100'>
                                 <div className='moveX flex gap-3 text-8xl font-[font2] leading-none items-center text-black'>
                                     <h2 className='text-[8vw] font-[font2] text-center uppercase leading-none whitespace-nowrap'>send us a fex</h2>
@@ -181,10 +191,10 @@ function FullScreenNav() {
                             </div>
                         </div>
                         {/* ######## BLOG ######### */}
-                        <div className="link origin-top border-y group relative h-[7vw] py-1 w-full overflow-hidden">
-                            <h1 className='text-[7vw] font-[font2] text-center uppercase leading-none'>blog</h1>
+                        <div className="link origin-top border-y group relative min-h-10 md:min-h-18 lg:h-[8vw] py-2 w-full overflow-hidden">
+                            <h1 className='text-4xl sm:text-5xl md:text-6xl lg:text-[8vw] font-[font2] text-center uppercase leading-none'>blog</h1>
                             {/* ########## HOVER DIV ########## */}
-                            <div className='bg-yellow-300 transition-all absolute top-0 h-0 w-full leading-none
+                            <div className='hidden lg:block bg-yellow-300 transition-all absolute top-0 h-0 w-full leading-none
                          group-hover:h-full duration-300 inset-0 opacity-0 group-hover:opacity-100'>
                                 <div className='moveX flex gap-3 text-8xl font-[font2] leading-none items-center text-black'>
                                     <h2 className='text-[8vw] font-[font2] text-center uppercase leading-none whitespace-nowrap'>read articles</h2>

@@ -64,7 +64,7 @@ const Agence = () => {
 
     <div className='parent'>
       <div id='page1' className='py-1 relative'>
-        
+
         <div className='relative font-[font2] z-10'>
           <div className='lg:mt-[55vh] mt-[30vh]'>
             <h1 className='text-[20vw] text-center uppercase leading-[18vw]'>SEVEN7Y <br /> TWO</h1>
@@ -78,41 +78,16 @@ const Agence = () => {
             </p>
           </div>
         </div>
-        <div ref={imageDivRef} className='absolute overflow-hidden lg:h-[20vw] h-[30vw] lg:rounded-3xl rounded-xl lg:w-[15vw] w-[25vw] 
+        <div ref={imageDivRef} className='absolute hidden md:block overflow-hidden lg:h-[20vw] h-[30vw] lg:rounded-3xl rounded-xl lg:w-[15vw] w-[25vw] 
         lg:top-96 -top-48 lg:left-[30vw] left-[30vw] -mt-[20vw]'>
           <img ref={imageRef} className=' h-full object-cover w-full' src="/agency/CAMILLE_480X640_2.jpg" alt="" />
         </div>
       </div>
-      <div id='page2' className=" h-screen">
+      {/* <div id='page2' className=" h-screen">
 
-      </div>
+      </div> */}
     </div>
 
-
-    // <div className='parent'>
-    //   <div className='section1 y-1'>
-    //     <div ref={imageDivRef}
-    //       className='absolute overflow-hidden top-[10vw] left-[31vw] h-72 w-52 rounded-3xl bg-red-500'>
-    //       <img ref={imageRef} src="/agency/CAMILLE_480X640_2.jpg" className='w-full h-full object-cover' alt="" />
-    //     </div>
-    //     <div className='font-[font2] relative'>
-    //       <div className='mt-[55vh]'>
-    //         <h1 className='text-[19vw]  uppercase leading-[17vw] text-center' >SEVEN7Y <br /> TWO</h1>
-    //       </div>
-    //       <div className='pl-[40%] mt-20'>
-    //         <p className='text-6xl'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    //           We’re inquisitive and open-minded, and we make sure creativity crowds out ego from every corner.
-    //           A brand is a living thing, with values, a personality and a story. If we ignore that,
-    //           we can achieve short-term success, but not influence that goes the distance.
-    //           We bring that perspective to every brand story we help tell.
-    //         </p>
-    //       </div>
-    //     </div>
-    //   </div>
-    //   <div className="section2 h-screen">
-
-    //   </div>
-    // </div>
   )
 }
 
